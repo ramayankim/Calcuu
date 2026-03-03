@@ -1,0 +1,42 @@
+users = []
+
+
+def display_menu():
+    print("\nUser Management System")
+    print("1. Show Users")
+    print("2. Add User")
+    print("3. Update User")
+    print("4. Delete User")
+    print("5. Exit")
+
+while True:
+    display_menu()
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        if len(users) == 0:
+            print("No users in the list.")
+        else:
+            print("\nUser List:")
+            for i, user in enumerate(users):
+                print(f"{i+1}. {user}") 
+        
+    elif choice == '2':
+        name = input("Enter user name: ")
+        users.append(name)
+        print(f"User '{name}' added successfully.")
+        
+    elif choice == '3':
+        if len(users) == 0:
+            print("No users to update.")
+        else:
+            print("Current users:")
+            for i, user in enumerate(users):
+                print(f"{i+1}. {user}")
+            try:
+                index = int(input("Enter user number to update: ")) - 1
+                new_name = input("Enter new name: ")
+                users[index] = new_name
+                print("User updated successfully.")
+            except (ValueError, IndexError):
+                print("Invalid input")
